@@ -2,7 +2,7 @@ const Maybe = require('folktale/maybe')
 const Task = require('folktale/concurrency/task')
 const Parser = require('markdown-parser')
 
-const { File, Dir } = require('files')
+const { File, Dir } = require('./files')
 
 const parseTask = Task.fromNodeback((content, cb) => new Parser().parse(content, cb))
 
