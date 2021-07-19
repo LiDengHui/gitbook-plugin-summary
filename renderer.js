@@ -1,4 +1,4 @@
-const Maybe = require('gitbook-plugin-summary-xy/node_modules/folktale/maybe')
+const Maybe = require('folktale/maybe')
 const fs = require('fs')
 const print = str => x => { console.log(str, x); return x }
 

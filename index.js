@@ -1,13 +1,13 @@
-const Maybe = require('gitbook-plugin-summary-xy/node_modules/folktale/maybe')
+const Maybe = require('folktale/maybe')
 
-const { buildSummary, fileEntry, dirEntry, addSubSummary } = require('gitbook-plugin-summary-xy/renderer')
-const processTree = require('gitbook-plugin-summary-xy/processor')
+const { buildSummary, fileEntry, dirEntry, addSubSummary } = require('./renderer')
+const processTree = require('./processor')
 const {
   getPathTree,
   readFile,
   writeSummaryFile,
   isReadmeExistingInDir
-} = require('gitbook-plugin-summary-xy/fs')
+} = require('./fs')
 
 const print = str => x => { console.log(str, x); return x }
 
@@ -22,7 +22,7 @@ module.exports = {
           .run()
           .promise()
 
-        console.info(`\x1b[36mgitbook-plugin-summary: \x1b[32m${config.summaryFilename} generated successfully.`)
+        console.info(`\x1b[36mgitbook-plugin-summary-xy: \x1b[32m${config.summaryFilename} generated successfully.`)
       } catch (e) {
         console.error('\n\n', e)
       }
