@@ -1,12 +1,12 @@
 {
-  "name": "gitbook-plugin-summary",
-  "version": "1.1.0",
+  "name": "gitbook-plugin-summary-xy",
+  "version": "1.1.1",
   "description": "Gitbook plugin to auto-generate SUMMARY.md",
   "main": "index.js",
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/julianxhokaxhiu/gitbook-plugin-summary.git"
+    "url": "git+https://github.com/LiDengHui/gitbook-plugin-summary.git"
   },
   "keywords": [
     "gitbook",
@@ -14,15 +14,14 @@
     "gitbook-summary"
   ],
   "author": {
-    "name": "Julian Xhokaxhiu",
-    "email": "",
-    "url": "https://julianxhokaxhiu.com/"
+    "name": "li xiaoyao",
+    "email": "3379489032@qq.com"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/julianxhokaxhiu/gitbook-plugin-summary/issues"
+    "url": "https://github.com/LiDengHui/gitbook-plugin-summary/issues"
   },
-  "homepage": "https://github.com/julianxhokaxhiu/gitbook-plugin-summary#readme",
+  "homepage": "https://github.com/LiDengHui/gitbook-plugin-summary#readme",
   "engines": {
     "gitbook": ">=3.2.3"
   },

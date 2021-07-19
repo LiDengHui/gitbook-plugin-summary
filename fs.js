@@ -18,7 +18,6 @@ const getPathTree = config =>
 const getFilesRecursively = config => {
   const mdFiles = getPaths(config, `*/**/*.md`)
   const directories = getPaths(config, '**/*/')
-
   return Task.of([
     ...mdFiles,
     ...directories
@@ -41,7 +40,7 @@ const getPaths = (config, pattern) =>
     pattern,
     {
       cwd: config.root,
-      ignore: [ 'node_modules/**', '_book', 'styles', '_layouts', '_layouts/website', '**/img' ],
+      ignore: [ 'node_modules/**', '_book', 'styles', '_layouts', '_layouts/website', '**/img'].concat(config.ignorePath),
       nosort: true
     }
   )

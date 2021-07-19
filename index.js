@@ -1,13 +1,13 @@
-const Maybe = require('folktale/maybe')
+const Maybe = require('gitbook-plugin-summary-xy/node_modules/folktale/maybe')
 
-const { buildSummary, fileEntry, dirEntry } = require('./renderer')
-const processTree = require('./processor')
+const { buildSummary, fileEntry, dirEntry, addSubSummary } = require('gitbook-plugin-summary-xy/renderer')
+const processTree = require('gitbook-plugin-summary-xy/processor')
 const {
   getPathTree,
   readFile,
   writeSummaryFile,
   isReadmeExistingInDir
-} = require('./fs')
+} = require('gitbook-plugin-summary-xy/fs')
 
 const print = str => x => { console.log(str, x); return x }
 
@@ -36,8 +36,9 @@ const plan = config =>
     .chain(processTree(config))
     .map(renderEntries(config))
     .map(buildSummary(config))
+    .map(addSubSummary(config))
     .map(writeSummaryFile(config))
-
+    
 const getTreeInfo = config => tree =>
   tree.map(getNeededInfo(config))
 
@@ -61,12 +62,15 @@ const renderEntry = config => file =>
 const getConfig = (root, config) => {
   const readmeFilename = config.get('structure.readme')
   const bookTitle = config.get('title')
-
+  const ignorePath = config.get('pluginsConfig.summary-xy.ignorePath') || []
+  const subSummaryPath = config.get('pluginsConfig.summary-xy.subSummaryPath')|| 'SUB_SUMMARY.md'
   return {
     root,
     bookTitle: Maybe.fromNullable(bookTitle),
     isReadme: path => path.includes(readmeFilename),
     readmeFilename,
+    ignorePath,
+    subSummaryPath,
     summaryFilename: config.get('structure.summary')
   }
 }

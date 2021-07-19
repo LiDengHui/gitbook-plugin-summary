@@ -1,5 +1,5 @@
-const Maybe = require('folktale/maybe')
-
+const Maybe = require('gitbook-plugin-summary-xy/node_modules/folktale/maybe')
+const fs = require('fs')
 const print = str => x => { console.log(str, x); return x }
 
 const dirEntry = readmeFilename => ([ dirPath, hasReadme ]) => {
@@ -33,7 +33,7 @@ const getFileName = path =>
 // (String -> Bool) -> [ String, Markdown ] -> String
 const fileEntry = isReadme => ([ filePath, parsedMarkdown ]) => {
   if (isReadme(filePath)) return
-
+  
   const depth = getFileDepth(filePath)
   const fileTitle = formatTitle(getFileName(filePath))
 
@@ -65,8 +65,18 @@ const getDirDepth = path => getFileDepth(path) - 1
 const buildSummary = config => entries =>
   entries.join('\n')
 
+const addSubSummary = config => summary =>  {
+  
+  const subSummary = fs.readFileSync(`${config.root}/${config.subSummaryPath}`, { encoding: 'utf8' });
+
+  return `${subSummary}/n${summary}`
+}
+
+
+
 module.exports = {
   fileEntry,
   dirEntry,
-  buildSummary
+  buildSummary,
+  addSubSummary
 }
