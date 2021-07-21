@@ -69,7 +69,7 @@ const addSubSummary = config => summary =>  {
   
   const subSummary = fs.readFileSync(`${config.root}/${config.subSummaryPath}`, { encoding: 'utf8' });
 
-  return `${subSummary}/n${summary}`
+  return `${subSummary} ${summary}`
 }
 
 
